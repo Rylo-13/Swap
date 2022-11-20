@@ -11,7 +11,6 @@ function App() {
   const [signer, setSigner] = useState(undefined);
   const [signerAddress, setSignerAddress] = useState(undefined);
 
-  //fix
   const [slippageAmount, setSlippageAmount] = useState(undefined);
   const [deadlineMinutes, setDeadlineMinutes] = useState(undefined);
   const [showModal, setShowModal] = useState(undefined);
