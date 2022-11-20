@@ -65,13 +65,13 @@ body {
 }
 
 .swapContainer {
-  background-color: rgb(203, 231, 240);
+  background-color: rgb(189, 94, 213);
   width: 440px;
   height: 350px;
   margin: 0 auto;
   top: 50%;
   border-radius: 24px;
-  border: 1px solid #fff;
+  border: 1px solid rgb(25, 25, 187);
   padding: 6px;
 }
 

@@ -1,12 +1,19 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import PageButton from "./components/pageButton";
+import { GearFill } from "react-bootstrap-icons";
+import PageButton from "./components/PageButton";
+import ConnectButton from "./components/ConnectButton";
+import ConfigModal from "./components/ConfigModal";
 
 function App() {
   const [provider, setProvider] = useState(undefined);
   const [signer, setSigner] = useState(undefined);
   const [signerAddress, setSignerAddress] = useState(undefined);
+
+  const [slippageAmount, setSlippageAmount] = useState(undefined);
+  const [deadlineMinutes, setDeadlineMinutes] = useState(undefined);
+  const [showModal, setShowModal] = useState(undefined);
 
   useEffect(() => {
     const onLoad = async () => {
@@ -42,6 +49,39 @@ function App() {
           <PageButton name={"Pool"} />
           <PageButton name={"Vote"} />
           <PageButton name={"Charts"} />
+        </div>
+        <div className="rightNav">
+          <div className="connectButtonContainer">
+            <ConnectButton
+              provider={provider}
+              isConnected={isConnected}
+              signerAddress={signerAddress}
+              getSigner={getSigner}
+            />
+          </div>
+          <div className="my-2 buttonContainer">
+            <PageButton name={"..."} isBold={true} />
+          </div>
+        </div>
+      </div>
+
+      <div className="appBody">
+        <div className="swapContainer">
+          <div className="swapHeader">
+            <span className="swapText">Swap</span>
+            <span className="gearContainer" onClick={() => setShowModal(true)}>
+              <GearFill />
+            </span>
+            {showModal && (
+              <ConfigModal
+                onClose={() => setShowModal(false)}
+                setDeadlineMinutes={setDeadlineMinutes}
+                deadlineMinutes={deadlineMinutes}
+                setSlippageAmount={setSlippageAmount}
+                slippageAmount={SlippageAmount}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
